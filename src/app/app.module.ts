@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PriceServiceService } from './services/price-service.service';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserInfoModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    PriceServiceService
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

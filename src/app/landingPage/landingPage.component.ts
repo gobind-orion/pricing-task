@@ -1,6 +1,7 @@
 import { UserInfoComponent } from './../user-info/user-info/user-info.component';
 import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, Validators, FormBuilder } from '@angular/forms';
+import { PriceServiceService } from '../services/price-service.service';
 @Component({
   selector: 'app-landingPage',
   templateUrl: './landingPage.component.html',
@@ -18,14 +19,17 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
     monthly: 'Monthly',
     yearly: 'Yearly'
   }
+  users:any;
   showPlan: boolean = true;
+
   @ViewChild('anchor', {read: ViewContainerRef}) anchor: ViewContainerRef;
   ref!: ComponentRef<UserInfoComponent>;
   constructor(
     public formBuilder: FormBuilder,
-    private factoryResolver: ComponentFactoryResolver
+    private factoryResolver: ComponentFactoryResolver,
+    public priceService: PriceServiceService
   ) { 
-    super(formBuilder);
+    super(formBuilder, priceService);
   }
 
   ngOnInit() {
@@ -34,7 +38,14 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
     }
     this.planType = this.plans.monthly;
   }
-  async loadUser(){
+  async loadUser() {
+    const obj = {
+      totalPrice: this.updatedAmt,
+      noOfUsers: this.users,
+      planType: this.planType
+    }
+    console.log(obj);
+    this.priceService.setData(obj);
     const {UserInfoComponent} = await import('./../user-info/user-info/user-info.component');
     const factory = this.factoryResolver.resolveComponentFactory(UserInfoComponent);
     // this.anchor.createComponent(factory);

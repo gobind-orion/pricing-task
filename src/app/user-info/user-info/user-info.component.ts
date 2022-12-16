@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, Validators, FormBuilder } from '@angular/forms';
-
+import { PriceServiceService } from '../../services/price-service.service';
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
@@ -19,7 +19,10 @@ form: FormGroup = new FormGroup({
     Loction: new FormControl(''),
   });
   submitted = false;
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(
+    public formBuilder: FormBuilder, 
+    public priceService: PriceServiceService 
+  ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -43,14 +46,20 @@ form: FormGroup = new FormGroup({
 
   onSubmit(): void {
     this.submitted = true;
+    const getData = this.priceService.getData();
+    this.form.value['NoOfUsers'] = getData.noOfUsers;
+    this.form.value['PlanType'] = getData.planType;
+    this.form.value['TotalPrice'] = getData.totalPrice;
+    console.log('getData', getData);
+    console.log('FormData', this.form.value)
     if (this.form.invalid) {
       return;
     }
-    console.log(JSON.stringify(this.form.value, null, 2));
+    console.log(this.form);
   }
 
   onReset(): void {
-    this.submitted = false;
-    this.form.reset();
+    //this.submitted = false;
+    //this.form.reset();
   }
 }

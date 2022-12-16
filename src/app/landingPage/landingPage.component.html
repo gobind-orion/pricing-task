@@ -65,8 +65,8 @@
               </div>
               <div fxFlex="1 0 auto" class="styling">
                 <label for="roleFormControlInput2" class="form-label">No of Users</label>
-                <select  id="selectedvalue" (change)="onChange($event)">
-                  <option *ngFor="let arr of array">{{arr}}</option>
+                <select  id="users" [(ngModel)]="users" name="users" (change)="onChange($event)">
+                  <option value="{{arr}}" *ngFor="let arr of array;let i = index" [selected]="i == 0">{{arr}}</option>
               </select>
               </div>
               <div fxFlex="1 0 auto" class="styling">
