@@ -3,7 +3,6 @@ import { FormGroup, FormControl, AbstractControl, Validators, FormBuilder } from
 import { PriceServiceService } from '../../services/price-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
@@ -15,7 +14,7 @@ export class UserInfoComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder, 
     public priceService: PriceServiceService,
-    public httpClient: HttpClient 
+    public httpClient: HttpClient
   ) {
     this.form = new FormGroup({
       FullName: new FormControl(''),
@@ -51,6 +50,7 @@ export class UserInfoComponent implements OnInit {
   }
 
   onSubmit(): void {
+    
     this.submitted = true;
     if (this.form.invalid) {
       return;
@@ -59,32 +59,32 @@ export class UserInfoComponent implements OnInit {
     this.form.value['NoOfUsers'] = getData.noOfUsers;
     this.form.value['PlanType'] = getData.planType;
     this.form.value['TotalPrice'] = getData.totalPrice;
-    //console.log('getData', getData);
-    //console.log('FormData', this.form.value)
+    
     let body = {
-          "FullName": this.form.value.FullName,
-          "Email": this.form.value.Email,
-          "PlanType": this.form.value.PlanType,
-          "NoOfUsers": this.form.value.NoOfUsers,
-          "TotalPrice": this.form.value.TotalPrice,
-          "Role": this.form.value.Role,
-          "Name": this.form.value.Name,
-          "Size": this.form.value.Size,
-          "Loction": this.form.value.Loction,
-
-    }
-    this.sendFormData(body).subscribe(
-      res => {
-        console.log(res);
+      "planType": this.form.value.PlanType,
+      "noOfUsers": this.form.value.NoOfUsers,
+      "totalPrice": this.form.value.TotalPrice,
+      "contactInfo": {
+          "email": this.form.value.Email,
+          "fullName": this.form.value.FullName,
+          "role": this.form.value.Role,
+          "company": {
+            "name": this.form.value.Name,
+            "size": this.form.value.Size,
+            "location": this.form.value.Loction
+        }
       }
-    );
-   
-    console.log(this.form);
   }
-  sendFormData(body:any): Observable<any> {
-      let url = "https://localhost:7097/SaveRansomwareDetails";
-      return this.httpClient.post<any>(url, body);
-  }
+    let url = "https://localhost:7097/SaveRansomwareDetails";    
+    this.httpClient.post<string>(url, body).subscribe({
+      next: (data: any) => {
+          alert('saved');
+      },
+      error: error => {
+          console.error('There was an error!', error);
+      }
+  })
+}
 
   onReset(): void {
     //this.submitted = false;

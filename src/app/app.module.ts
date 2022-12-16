@@ -8,7 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { PriceServiceService } from './services/price-service.service';
 import { HttpClientModule } from '@angular/common/http';
 
