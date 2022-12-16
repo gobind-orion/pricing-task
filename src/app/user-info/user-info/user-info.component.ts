@@ -87,7 +87,6 @@ export class UserInfoComponent implements OnInit {
 }
 
   onReset(): void {
-    //this.submitted = false;
-    //this.form.reset();
+    // This is intentional
   }
 }

@@ -1,7 +1,7 @@
 
 import { UserInfoComponent } from './../user-info/user-info/user-info.component';
 import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { FormGroup, FormControl, AbstractControl, Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { PriceServiceService } from '../services/price-service.service';
 import { HttpClient } from '@angular/common/http';
 @Component({
@@ -49,11 +49,9 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
       noOfUsers: this.users,
       planType: this.planType
     }
-    console.log(obj);
     this.priceService.setData(obj);
     const {UserInfoComponent} = await import('./../user-info/user-info/user-info.component');
     const factory = this.factoryResolver.resolveComponentFactory(UserInfoComponent);
-    // this.anchor.createComponent(factory);
     this.ref = this.anchor.createComponent(factory);
     this.showPlan = false;
     console.log(this.anchor);
