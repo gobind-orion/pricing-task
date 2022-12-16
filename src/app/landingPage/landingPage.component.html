@@ -1,0 +1,107 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-between stretch">
+  <div fxFlex>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between none">
+      <div fxFlex fxFlexAlign="stretch" class="leftBlueBg">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <div fxFlex="initial" class="p-4 px-5 text-center">
+            <div fxLayout="column wrap" fxLayoutAlign="space-between stretch">
+              <div fxFlex="1 0 auto">
+                <h2 class="h-title my-5">Ransomeware Protection</h2>
+              </div>
+              <div fxFlex="1 0 auto">
+                <mat-card class="styling">
+                  <div class="title-icon mx-auto">
+                    <img src="./../../assets/img/Group.png" width="96px" alt="Title Icon">
+                  </div>
+                  <mat-card-content>
+                    <div>
+                      <div>
+                        <h1>$28</h1> {{planType}}/User
+                      </div>
+                      <p>
+                        <strong>
+                          Be ready for
+                          ransomware attacks.
+                        </strong>
+                      </p>
+                      <p for="plan">
+                        At a minimum, all businesses
+                        should implement security
+                        against ransomware.</p>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <div fxFlex="initial" class="p-4 px-5 text-left">
+            <div *ngIf="showPlan" fxLayout="column wrap" fxLayoutAlign="space-between stretch">
+              <div fxFlex="1 0 auto" class="styling">
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div fxFlex="30">
+                    <label for="plan" class="form-label">Plan:</label>
+                  </div>
+                  <div fxFlex="initial">
+                    <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
+                      <div>
+                        <label for="plan" class="form-label">Monthly</label>
+                      </div>
+                      <div>
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" [checked]="checked" (click)="toggle($event)" role="switch" id="flexSwitchCheckChecked">
+                        </div>
+                      </div>
+                      <div>
+                        <label for="plan" class="form-label">Yearly</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div fxFlex="1 0 auto" class="styling">
+                <label for="roleFormControlInput2" class="form-label">No of Users</label>
+                <select  id="selectedvalue" (change)="onChange($event)">
+                  <option *ngFor="let arr of array">{{arr}}</option>
+              </select>
+              </div>
+              <div fxFlex="1 0 auto" class="styling">
+                <p>
+                  CISOMate Ransomware Protection
+        provides a comprehensive solution to
+        detect, prevent, act, and recover from
+        any case of malicious activity.
+                 </p>
+              </div>
+              <div fxFlex="1 0 auto">
+                <ul>
+                  <li>Asset Management</li>
+                  <li>Leading EDR+ SOC 24/7 MDR</li>
+                  <li>Cloud Secure Backup</li>
+                 </ul>
+              </div>
+              <div>
+                <label for="roleFormControlInput2" class="form-label">Total price {{'$ ' + updatedAmt}}</label>
+              </div>
+            </div>
+            <ng-container #anchor></ng-container>
+            <div fxLayout="column wrap" fxLayoutAlign="space-between stretch">
+              <div fxFlex="1 0 auto">
+                <button *ngIf="showPlan" type="button" class="btn btn-primary" (click)="loadUser()" data-bs-toggle="button">Process to Checkout</button>
+                <button *ngIf="!showPlan" type="button" class="btn btn-outline-secondary" (click)="removeUserComp()">Back</button>
+                <button *ngIf="!showPlan" type="button" class="btn btn-primary"  data-bs-toggle="button" (click)="onSubmit()">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div fxFlex>
+      </div>
+    </div>
+  </div>
+</div>

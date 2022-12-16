@@ -1,0 +1,53 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-between stretch" fxLayoutGap="0px">
+
+  <div fxFlex>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="initial">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label class="form-label">Full Name</label>
+            <span class="red-star"> * </span>
+            <input type="text" formControlName="FullName" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['FullName'].errors }" />
+            <div *ngIf="submitted && f['FullName'].errors" class="invalid-feedback">
+              <div *ngIf="f['FullName'].errors['required']">Fullname is required</div>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label">Email</label>
+            <span class="red-star"> * </span>
+            <input type="email" formControlName="Email" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['Email'].errors }">
+            <div *ngIf="submitted && f['Email'].errors" class="invalid-feedback">
+              <div *ngIf="f['Email'].errors['required']">Email is required</div>
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">What is you Role?</label>
+            <input type="text" formControlName="Role" class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Company Name</label>
+            <input type="text" formControlName="Name" class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Company Size</label>
+            <input type="text" formControlName="Size" class="form-control">
+          </div>
+
+
+          <div class="form-group mb-3">
+            <label class="form-label">Company Location</label>
+            <input type="text" formControlName="Loction" class="form-control">
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>

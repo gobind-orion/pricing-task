@@ -1,0 +1,22 @@
+.leftBlueBg{
+    background-color: #204275;
+    background-image: url('./../../assets/img/Bg_cysomate.png');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.h-title{
+    color: #fff;;
+}
+mat-card{
+    border-radius: 25px;
+}
+mat-card .title-icon{
+    margin-top: -50px;
+}
+.styling, mat-card  mat-card-content, ul li{
+/* mat-card  mat-card-content{ */
+    color: #204275;
+    font-size: 22px;
+}
