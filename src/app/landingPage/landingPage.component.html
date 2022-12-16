@@ -1,3 +1,68 @@
+<section class="landing_screen">
+  <div class="screen_one" [ngClass]="{'my_class': showHideBar === false }">
+    <div class="screen_one_left">
+      <h2 class="h-title">Ransomeware Protection</h2>
+      <div class="screen_one_left_box text-center">
+        <img class="top_icon" src="../../assets/img/round_icon.svg" alt="">
+        <h1>$28</h1>
+        <h4>{{planType}}/User</h4>
+        <h3> Be ready for <br>ransomware attacks.</h3>
+        <p for="plan">At a minimum, all businesses
+          should implement security
+          against ransomware.</p>
+      </div>
+    </div>
+    <div class="screen_one_right">
+      <div *ngIf="showPlan" class="screen_two">
+        <div class="top_plan">
+          <label for="plan" class="form-label me-5">Plan:</label>
+          <label for="plan" class="form-label">Monthly</label>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" [checked]="checked" (click)="toggle($event)" role="switch"
+              id="flexSwitchCheckChecked">
+          </div>
+          <label for="plan" class="form-label">Yearly</label>
+          <sup class="discount">20% discount</sup>
+        </div>
+        <div class="no_of_users">
+          <label for="roleFormControlInput2" class="form-label">No of Users</label>
+          <select id="selectedvalue" [(ngModel)]="users"  name="users" (change)="onChange($event)">
+            <option *ngFor="let arr of array; first as firstElement">{{arr}}</option>
+          </select>
+        </div>
+        <p class="mt-3 w100p float-start">
+          CISOMate Ransomware Protection
+          provides a comprehensive solution to
+          detect, prevent, act, and recover from
+          any case of malicious activity.
+        </p>
+        <ul class="check_icon w100p float-start mt-3">
+          <li>Asset Management</li>
+          <li>Leading EDR+ SOC 24/7 MDR</li>
+          <li>Cloud Secure Backup</li>
+        </ul>
+        <label for="roleFormControlInput2" class="form-label">Total price <b>{{'$ ' + updatedAmt}}</b></label>
+      </div>
+
+      <ng-container #anchor></ng-container>
+
+      <div class="bottom_buttons">
+        
+        <div>
+          <button *ngIf="showPlan" type="button" class="btn btn-primary" (click)="loadUser()" data-bs-toggle="button">Process to Checkout</button>
+          <button *ngIf="!showPlan" type="button" class="btn btn-outline-primary me-3" (click)="removeUserComp()">Back</button>
+          <button *ngIf="!showPlan" type="button" class="btn btn-primary primary2"  data-bs-toggle="button" (click)="onSubmit()">Continue</button>
+          <!-- <button *ngIf="showPlan" type="button" class="btn btn-primary" (click)="loadUser()"
+            data-bs-toggle="button">Process to Checkout</button>
+          <button *ngIf="!showPlan" type="button" class="btn btn-outline-secondary"
+            (click)="removeUserComp()">Back</button>
+          <button *ngIf="!showPlan" type="button" class="btn btn-primary" data-bs-toggle="button">Continue</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
 <div fxLayout="row wrap" fxLayoutAlign="space-between stretch">
   <div fxFlex>
     <div fxLayout="row wrap" fxLayoutAlign="space-between none">
@@ -104,4 +169,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PriceServiceService } from './services/price-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { PriceServiceService } from './services/price-service.service';
     AppRoutingModule,
     UserInfoModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [
     PriceServiceService

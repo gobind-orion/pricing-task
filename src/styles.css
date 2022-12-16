@@ -1,7 +1,95 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 html, body { padding: 0; margin: 0; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-*, ::after, ::before{
-    box-sizing: content-box;
-}
+body { margin: 0;    font-family: 'Poppins', sans-serif!important;}
+ 
+
+
+.title_h3{font-family: 'Poppins'!important;
+    font-style: normal!important;
+    font-weight: 700!important;
+    font-size: 25px!important;
+    line-height: 42px!important;    
+    color: #183981!important;
+    margin:0px;    
+    }
+.title_h4{font-style: normal!important;
+    font-weight: 600!important;
+    font-size: 25px!important;
+    line-height: 34px!important;
+    display: flex;
+    align-items: center;    
+    color: #000000!important; 
+}    
+    .title_h4 span {
+        width: 39px;
+        height: 39px;
+        background-color: #183981;
+        border-radius: 50%;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 31px;
+        color: #FFFFFF;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+    }
+
+
+    .form-group .form-label{font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 39px;        
+        color: #000000;
+    }
+    .form-group .form-control{background: #F2F7FB;
+        border: 1px solid #BABABA;
+        height: 55px;
+        border-radius: 10px;}   
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form_box {
+            width: 100%;
+            padding: 0 54px;
+        }
+        .hr_line {
+            margin: 10px -60px 0px -60px;
+            color: #BABABA;
+            opacity: 1;
+        }
+        .info{font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;            
+            color: #000000;}
+
+            .bottom_buttons .btn-primary{background-color: #183981;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 21px;
+                line-height: normal;
+                color: #0AF2D6;
+                border-radius: 10px;
+                border: none;
+                min-width: 320px;
+                min-height: 54px;}         
+                
+                .btn-outline-primary{ font-style: normal;
+                    font-weight: 600;
+                    font-size: 21px;
+                    line-height: normal;
+                    color: #183981;
+                    border:1px solid #183981!important;
+                    border-radius: 10px;
+                    border: none;
+                    min-width: 320px;
+                    min-height: 54px;}
+
+                    .btn-outline-primary:hover{background-color: #183981!important;color: #FFF!important;}

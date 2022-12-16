@@ -1,4 +1,4 @@
-.leftBlueBg{
+.leftBlueBg {
     background-color: #204275;
     background-image: url('./../../assets/img/Bg_cysomate.png');
     background-position: center bottom;
@@ -6,17 +6,227 @@
     background-size: cover;
 }
 
-.h-title{
-    color: #fff;;
+.h-title {
+    color: #fff;
+    ;
 }
-mat-card{
+
+mat-card {
     border-radius: 25px;
 }
-mat-card .title-icon{
+
+mat-card .title-icon {
     margin-top: -50px;
 }
-.styling, mat-card  mat-card-content, ul li{
-/* mat-card  mat-card-content{ */
+
+.styling,
+mat-card mat-card-content,
+ul li {
+    /* mat-card  mat-card-content{ */
     color: #204275;
     font-size: 22px;
 }
+
+.landing_screen {
+	width: 100%;
+	padding: 70px 0;
+}
+
+.screen_one {
+    background: #F2F7FB;
+    border-radius: 40px;
+    width: 1210px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    overflow: hidden;
+}
+
+.screen_one .screen_one_left {
+    flex: 0 0 50%;
+    padding: 40px 40px 90px 40px;
+    max-width: 50%;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/img/Bg_cysomate.png);
+
+}
+
+.screen_one_right {
+    flex: 0 0 50%;
+    padding: 60px;
+    max-width: 50%;
+    display: flex;
+flex-direction: column;
+}
+
+.screen_one .screen_one_left .h-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 54px;
+    font-family: 'Poppins', sans-serif;
+    color: #F2F7FB;
+    text-align: center;
+}
+
+.screen_one_left_box {
+    background: #F2F7FB;
+    border-radius: 40px;
+    width: 460px;
+    padding: 15px 15px 35px 15px;
+
+    margin: 90px auto 0;
+}
+
+.screen_one_left_box .top_icon {
+    margin-top: -70px;
+}
+
+.screen_one_left_box h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 44px;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #204275;
+    margin-bottom: -8px;
+    margin-top: 20px;
+}
+
+.screen_one_left_box h4 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #204275;
+}
+
+.screen_one_left_box h3 {
+    font-style: normal;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 24px;
+line-height: 38px;
+    color: #204275;
+    margin: 20px 0 32px 0;
+    display: inline-block;
+}
+
+ p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+line-height: 35px;
+    clear: both;
+    color: #204275;
+}
+
+.top_plan {
+    display: flex;
+justify-content: start;
+align-items: center;
+}
+.top_plan .form-label{font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;    
+    color: #183981;}
+
+    .form-check-input:checked {
+        background-color: #183981;
+        border-color: #183981;
+      }    
+      .form-check-input{height: 1.3em;width: 2.4em;}
+      .top_plan .form-check.form-switch {
+        margin: 0 14px;
+    }
+    .discount{
+        background: #0AF2D6;
+        border-radius: 10px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        color: #183981;
+        padding: 4px 12px;
+        display: inline-block;
+        line-height: normal;
+        top: -20px;
+        margin-left: 6px;
+    }
+    .no_of_users {
+        float: left;
+        width: 100%;
+        margin-top: 35px;
+    }    
+.no_of_users label{font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 36px;    
+    color: #183981;}    
+    .no_of_users select {
+        height: 35px;
+        border: 0.5px solid #204275;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        color: #183981;
+        border-radius: 20px;
+        width: 180px;
+        margin-left: 13px;
+        background-color: #FFF;
+        padding: 0 14px;
+    }
+
+    ul.check_icon{margin: 0px;padding: 0px;list-style: none;}
+    ul.check_icon li{font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        background-image: url(../../assets/img/sucsess.svg);
+        background-size: 18px;
+        background-repeat: no-repeat;
+        padding-left: 36px;
+        background-position: left center;
+        line-height: 36px;  
+        margin-bottom: 5px;      
+        color: #183981;}
+
+
+        .w100p{width: 100%;}
+        .bottom_buttons {
+            width: 100%;
+            margin-top: auto;
+        }        
+      
+        .bottom_buttons .form-label{font-style: normal;          
+            font-size: 21px;
+            line-height: 31px;        
+            font-weight: normal;    
+            color: #204275;}
+            .bottom_buttons .form-label b{  font-weight: 600;}
+
+           
+
+                    .screen_one.my_class .screen_one_left {
+                        display: none;
+                    }
+                    .screen_one.my_class .screen_one_right {
+                        flex: 0 0 100%;
+                        max-width: 100%;
+                    }
+
+                    .screen_one.my_class .primary2 {
+                        display: none;
+                    }
+
+                    .screen_one.my_class > .screen_one_right > .bottom_buttons {
+                        margin-top: 20px;
+                        margin-left: 53px;
+                    }

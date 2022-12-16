@@ -2,6 +2,7 @@ import { UserInfoComponent } from './../user-info/user-info/user-info.component'
 import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, Validators, FormBuilder } from '@angular/forms';
 import { PriceServiceService } from '../services/price-service.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-landingPage',
   templateUrl: './landingPage.component.html',
@@ -15,6 +16,7 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
   checked: boolean = false;
   array = [1,2,3,4,5];
   planType: string;
+  showHideBar = true;
   plans = {
     monthly: 'Monthly',
     yearly: 'Yearly'
@@ -27,9 +29,10 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private factoryResolver: ComponentFactoryResolver,
-    public priceService: PriceServiceService
+    public priceService: PriceServiceService,
+    public httpClient: HttpClient
   ) { 
-    super(formBuilder, priceService);
+    super(formBuilder, priceService, httpClient);
   }
 
   ngOnInit() {
@@ -39,6 +42,7 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
     this.planType = this.plans.monthly;
   }
   async loadUser() {
+    this.showHideBar = false;
     const obj = {
       totalPrice: this.updatedAmt,
       noOfUsers: this.users,
@@ -55,6 +59,7 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
   }
   async removeUserComp(){
     this.showPlan = true;
+    this.showHideBar = true;
     const index = this.anchor.indexOf(this.ref.hostView)
     if(index != -1){
       this.anchor.remove(index);
