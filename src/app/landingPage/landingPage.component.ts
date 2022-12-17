@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./landingPage.component.css']
 })
 export class LandingPageComponent extends UserInfoComponent implements OnInit {
+
+  /* fields */
   seletedValue: any;
   test:any;
   defAmount: number = 28;
@@ -25,8 +27,11 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
   users:any;
   showPlan: boolean = true;
 
+  // Configure view query
   @ViewChild('anchor', {read: ViewContainerRef}) anchor: ViewContainerRef;
   ref!: ComponentRef<UserInfoComponent>;
+
+  // inject service in constructor
   constructor(
     public formBuilder: FormBuilder,
     private factoryResolver: ComponentFactoryResolver,
@@ -36,12 +41,14 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
     super(formBuilder, priceService, httpClient);
   }
 
+  // Angular lify cycle method is used to initialize angular componenets
   ngOnInit() {
     if(!this.updatedAmt){
       this.updatedAmt = this.defAmount;
     }
     this.planType = this.plans.monthly;
   }
+
   async loadUser() {
     this.showHideBar = false;
     const obj = {
@@ -49,15 +56,17 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
       noOfUsers: this.users,
       planType: this.planType
     }
-    console.log(obj);
+
+    // use service to pass data from one component to another
     this.priceService.setData(obj);
+
     const {UserInfoComponent} = await import('./../user-info/user-info/user-info.component');
     const factory = this.factoryResolver.resolveComponentFactory(UserInfoComponent);
-    // this.anchor.createComponent(factory);
     this.ref = this.anchor.createComponent(factory);
-    this.showPlan = false;
-    console.log(this.anchor);
+    this.showPlan = false;    
   }
+
+
   async removeUserComp(){
     this.showPlan = true;
     this.showHideBar = true;
@@ -71,7 +80,6 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
     this.updatedAmt = this.defAmount * noOfUsers
   }
   toggle(ev: any){
-    console.log(ev);
     if(this.checked){
       this.planType = this.plans.monthly;
       this.checked = false;

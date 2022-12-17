@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, Validators, FormBuilder } from '@angular/forms';
 import { PriceServiceService } from '../../services/price-service.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
@@ -11,6 +11,8 @@ import { Observable } from 'rxjs';
 export class UserInfoComponent implements OnInit {
   submitted = false;
   form: FormGroup;
+
+  // inject service in constructor
   constructor(
     public formBuilder: FormBuilder, 
     public priceService: PriceServiceService,
@@ -29,7 +31,10 @@ export class UserInfoComponent implements OnInit {
     });
   }
 
+  // Angular lify cycle method is used to initialize angular componenets
   ngOnInit(): void {
+
+    // Initialize form along with validation
     this.form = this.formBuilder.group(
       {
         FullName: ['', Validators.required],
@@ -45,10 +50,12 @@ export class UserInfoComponent implements OnInit {
     );
   }
 
+  // Return form controls
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
 
+  // submit form user deatil form
   onSubmit(): void {
     
     this.submitted = true;
@@ -86,8 +93,6 @@ export class UserInfoComponent implements OnInit {
   })
 }
 
-  onReset(): void {
-    //this.submitted = false;
-    //this.form.reset();
+  onReset(): void {    
   }
 }
