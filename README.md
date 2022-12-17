@@ -1,8 +1,7 @@
 
-## Code Style
 
 ```http
-      # Ransomeware
+      # RansomewareUI
 This is a test project to demonstrate using Angular 14. Project contains 2 pages to collect data from the client and post it to the backend api.
 
 
