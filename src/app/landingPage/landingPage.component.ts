@@ -56,11 +56,8 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
       noOfUsers: this.users,
       planType: this.planType
     }
-<<<<<<< HEAD
 
     // use service to pass data from one component to another
-=======
->>>>>>> ba56f97c98204e8bd425f3779f5c0e22b3e200ef
     this.priceService.setData(obj);
 
     const {UserInfoComponent} = await import('./../user-info/user-info/user-info.component');
