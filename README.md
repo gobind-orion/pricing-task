@@ -1,11 +1,9 @@
 
-
-```http
-      # RansomewareUI
-This is a test project to demonstrate using Angular 14. Project contains 2 pages to collect data from the client and post it to the backend api.
+# RansomewareUI
+This is a RansomewareUI project to demonstrate using Angular 14. Project contains 2 pages to collect data from the user and post it to the backend api.
 
 
-## Get started
+## Getting started
 
 ### Clone the repo
 
@@ -36,4 +34,3 @@ These are the most useful commands defined in `package.json`:
 * `npm run build:watch` - runs the TypeScript compiler and asset copier in "watch mode"; when changes occur to source files, they will be recompiled or copied into `dist/`.
 * `npm run lint` - runs `tslint` on the project files.
 * `npm run serve` - runs `lite-server`.
-```
