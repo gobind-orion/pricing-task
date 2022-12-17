@@ -93,6 +93,11 @@ export class UserInfoComponent implements OnInit {
   })
 }
 
+<<<<<<< HEAD
   onReset(): void {    
+=======
+  onReset(): void {
+    // This is intentional
+>>>>>>> ba56f97c98204e8bd425f3779f5c0e22b3e200ef
   }
 }
