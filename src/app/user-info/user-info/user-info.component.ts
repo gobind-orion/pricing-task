@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, Validators, FormBuilder } from '@angular/forms';
 import { PriceServiceService } from '../../services/price-service.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-info',
@@ -16,7 +17,8 @@ export class UserInfoComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder, 
     public priceService: PriceServiceService,
-    public httpClient: HttpClient
+    public httpClient: HttpClient,
+    public router: Router
   ) {
     this.form = new FormGroup({
       FullName: new FormControl(''),
@@ -82,9 +84,10 @@ export class UserInfoComponent implements OnInit {
         }
       }
   }
-    let url = "https://localhost:7097/SaveRansomwareDetails";    
+    let url = "https://localhost:7097/api/RansomwareTest/SaveRansomwareDetails";    
     this.httpClient.post<string>(url, body).subscribe({
       next: (data: any) => {
+        this.form.reset();
           alert('saved');
       },
       error: error => {
@@ -92,7 +95,4 @@ export class UserInfoComponent implements OnInit {
       }
   })
 }
-
-  onReset(): void {    
-  }
 }

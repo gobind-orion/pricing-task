@@ -4,6 +4,7 @@ import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, V
 import { FormBuilder } from '@angular/forms';
 import { PriceServiceService } from '../services/price-service.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-landingPage',
   templateUrl: './landingPage.component.html',
@@ -14,19 +15,22 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
   /* fields */
   seletedValue: any;
   test:any;
-  defAmount: number = 28;
+  monthlyPlanPrice: number = 28;
+  YearlyPlanPrice: number;
+  planPrice: number = 28;
   updatedAmt: any;
   checked: boolean = false;
-  array = [1,2,3,4,5];
+  numberOfUserColloection = [1,2,3,4,5];
   planType: string;
   showHideBar = true;
   plans = {
     monthly: 'Monthly',
     yearly: 'Yearly'
   }
-  users:any;
+  users:any = "1";
   showPlan: boolean = true;
-
+  discount: number = 20;
+  selectedUsers: any = "1";
   // Configure view query
   @ViewChild('anchor', {read: ViewContainerRef}) anchor: ViewContainerRef;
   ref!: ComponentRef<UserInfoComponent>;
@@ -36,24 +40,25 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
     public formBuilder: FormBuilder,
     private factoryResolver: ComponentFactoryResolver,
     public priceService: PriceServiceService,
-    public httpClient: HttpClient
+    public httpClient: HttpClient,
+    public router: Router
   ) { 
-    super(formBuilder, priceService, httpClient);
+    super(formBuilder, priceService, httpClient, router);
   }
 
   // Angular lify cycle method is used to initialize angular componenets
   ngOnInit() {
     if(!this.updatedAmt){
-      this.updatedAmt = this.defAmount;
+      this.updatedAmt = this.planPrice;
     }
     this.planType = this.plans.monthly;
   }
 
-  async loadUser() {
+  async checkout() {
     this.showHideBar = false;
     const obj = {
       totalPrice: this.updatedAmt,
-      noOfUsers: this.users,
+      noOfUsers: this.selectedUsers,
       planType: this.planType
     }
 
@@ -75,20 +80,39 @@ export class LandingPageComponent extends UserInfoComponent implements OnInit {
       this.anchor.remove(index);
     }
   }
-  onChange(ev: any){
-    const noOfUsers =  ev.target.value;
-    this.updatedAmt = this.defAmount * noOfUsers
+
+  /* onChange event for no of users
+  calculating total price based on number of users selected
+   */
+  onChangeNumberOfUser(ev: any){
+    this.selectedUsers =  ev.target.value;
+    if(this.planType === 'Yearly') {
+      this.updatedAmt = this.planPrice * this.selectedUsers;
+    }
+    else {
+      this.updatedAmt = this.planPrice * this.selectedUsers
+    }
+    
   }
-  toggle(ev: any){
+
+  /* onChange event for plan type
+     show plan amount based on plan type
+     Consider 20% discount for Yearly plan.
+   */
+  onChangePlanType(event: any){
     if(this.checked){
       this.planType = this.plans.monthly;
       this.checked = false;
+      this.planPrice = this.monthlyPlanPrice;
+      this.updatedAmt = this.planPrice * this.selectedUsers;
     } else if (!this.checked){
       this.checked = true;
+      this.planPrice = this.monthlyPlanPrice * 12;
+
+      // Calculate yearly plan by apply 20% discount
+      this.planPrice = this.planPrice - ((this.planPrice * 20)/100);
+      this.updatedAmt = this.planPrice  * this.selectedUsers;      
       this.planType = this.plans.yearly;
     }
   }
-  onSearch(evnt: any){}
-  onClear(){}
-
 }
